@@ -1,0 +1,47 @@
+<web-app>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring-parent.xml</param-value>
+	</context-param>
+
+	<!-- 上面是用来配置父容器的 tomcat 的代码是先解析listener节点的 -->
+
+
+		<servlet>
+			<servlet-name>app</servlet-name>
+			<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+			<init-param>
+				<param-name>contextConfigLocation</param-name>
+				<param-value>/WEB-INF/spring.xml</param-value>
+			</init-param>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+
+		<servlet-mapping>
+			<servlet-name>app</servlet-name>
+			<url-pattern>/app/*</url-pattern>
+		</servlet-mapping>
+
+		<servlet>
+			<servlet-name>app2</servlet-name>
+			<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+			<init-param>
+				<param-name>contextConfigLocation</param-name>
+				<param-value>/WEB-INF/spring.xml</param-value>
+			</init-param>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+
+		<servlet-mapping>
+			<servlet-name>app2</servlet-name>
+			<url-pattern>/app2/*</url-pattern>
+		</servlet-mapping>
+
+
+
+	</web-app>
